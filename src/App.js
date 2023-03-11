@@ -12,7 +12,7 @@ const ContactList = () => {
       .then(data => setContacts(data));
   }, []);
   
-  const handleSearch = (text) => {
+  const handleSearch = (text) => {        //sets search text to be used as a filter for the filtered contacts method
     setSearchText(text);
   };
 
@@ -42,26 +42,26 @@ const ContactList = () => {
         <div >
           <ul id = 'infoBar'>
 
-          <input type="text" placeholder="Search: Name, Email or phone" onChange={(event) => handleSearch(event.target.value)}/>
+            <input type="text" placeholder="Search: Name, Email or phone" onChange={(event) => handleSearch(event.target.value)}/>
 
-          <h2 id = 'info'>{selectedContact.name}</h2>
+            <h2 id = 'info'>{selectedContact.name}</h2>
 
-          {selectedContact.company ? (
-            <p id= 'info'> {selectedContact.company.catchPhrase} </p>
-          ) : ( null )}
-          
-          {selectedContact.address ? (
-            <p id = 'info'>City:  {selectedContact.address.city} </p>
-          ) : ( <p id = 'info'> No Selection </p>)}
+            {selectedContact.company ? (
+              <p id= 'info'> {selectedContact.company.catchPhrase} </p>
+            ) : ( null )}
+            
+            {selectedContact.address ? (
+              <p id = 'info'>City:  {selectedContact.address.city} </p>
+            ) : ( <p id = 'info'> No Selection </p>)}
 
-          {selectedContact.address ? (
-            <p id = 'info'>Street:  {selectedContact.address.street} </p>
-          ) : ( null )}
-          
-          {selectedContact.company ? (
-            <p id = 'info'>Company:  {selectedContact.company.name} </p>
-          ) : ( null )}
-          
+            {selectedContact.address ? (
+              <p id = 'info'>Street:  {selectedContact.address.street} </p>
+            ) : ( null )}
+            
+            {selectedContact.company ? (
+              <p id = 'info'>Company:  {selectedContact.company.name} </p>
+            ) : ( null )}
+            
           </ul>
         </div>
     </div>
