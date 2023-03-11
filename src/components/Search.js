@@ -1,5 +1,7 @@
 import React from 'react';
 
+//SeachBar  
+// Html input that takes text on event handles the filterlist in app.js 
 const SearchBar = ({ handleSearch }) => {
   return (
     <div>

@@ -2,30 +2,28 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './components/Search';
 
-const ContactList = () => {
-  const [contacts, setContacts] = useState([]);
-  const [searchText, setSearchText] = useState('');
-  const [selectedContact, setSelectedContact] = useState('null');
+const ContactList = () => {                     
+  const [contacts, setContacts] = useState([]);                      //contacts[], set through set contacts called through useEffect
+  const [searchText, setSearchText] = useState('');                  //Seach text  set through setseach test, called through Html INPUT tag      
+  const [selectedContact, setSelectedContact] = useState('null');   //Selected contacts set through setSelectedContact, called through LI -> onclick event
 
-  useEffect(() => {
+  useEffect(() => {                                 //Fetech placeholder data 
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(data => setContacts(data));
   }, []);
-
   
   const handleSearch = (text) => {
     setSearchText(text);
   };
 
-  //filtered contacts filterable by name email or phone number
-  const filteredContacts = contacts.filter((contacts) =>
+  const filteredContacts = contacts.filter((contacts) =>                    //filtered contacts filterable by name email or phone number
     contacts.name.toLowerCase().includes(searchText.toLowerCase()) || 
     contacts.email.toLowerCase().includes(searchText.toLowerCase()) ||
     contacts.phone.toLowerCase().includes(searchText.toLowerCase()) 
   );
 
-  const contactSelection = (contact) =>{
+  const contactSelection = (contact) =>{        //Sets the contactSelection variable by passing a contact. Called through onclick
     setSelectedContact(contact);
   }
   
@@ -34,7 +32,7 @@ const ContactList = () => {
 
       <ul>
         {filteredContacts.map((contact) => (
-          <li key={contact.id} onClick = { () => contactSelection(contact) } >
+          <li key={contact.id} onClick = { () => contactSelection(contact) } >  
             <h1 id = 'name' key = {contact.id}> {contact.name}</h1>
             <p id = 'phone' key = {contact.id}> Phone Number: {contact.phone}</p>
             <p id = 'email'key = {contact.id}> Email: {contact.email}</p>
